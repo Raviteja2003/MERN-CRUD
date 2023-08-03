@@ -14,8 +14,11 @@ app.get('/',(req,res)=>{
     .then(users => res.json(users))
     .catch(err => res.json(err))
 })
-
-
+app.post('/create',(req,res) => {
+    userModel.create(req.body)
+    .then(user => res.json(user))
+    .catch(err => res.json(err))
+})
 app.listen(3001,()=>{
     console.log("server is running");   
 })
