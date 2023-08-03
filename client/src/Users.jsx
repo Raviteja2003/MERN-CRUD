@@ -27,7 +27,7 @@ function Users() {
                       <td className=" py-2 px-4 text-left">{user.age}</td>
                       <td className=" py-2 px-4 text-left">{user.email}</td>
                       <td className=" py-2 px-4 text-left">
-                        <Link to="/update" className="bg-blue-500 hover:bg-blue-500 text-white text-sm py-1 px-2 rounded">
+                        <Link to={`/edit/${user.id}`} className="bg-blue-500 hover:bg-blue-500 text-white text-sm py-1 px-2 rounded">
                           Update
                         </Link>       
                         <Link to="/delete" className="bg-red-500 hover:bg-red-500 text-white text-sm py-1 px-2 rounded ml-2 md:ml-2">
