@@ -1,8 +1,22 @@
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import { Link } from "react-router-dom";
+import { deleteUser } from "./redux/userSlice";
+import axios from "axios";
+
 function Users() {
     
-    const users  = useSelector(state=>state.users.users)
+    const users  = useSelector(state => state.users.users)
+    const dispatch = useDispatch();
+
+    const handleDelete = (id) => {
+      axios.delete(`http://localhost:3001/deleteuser/${id}`)
+      .then(
+          res=>{
+            dispatch(deleteUser({id}))
+          }
+        )
+        .catch(err => console.log(err))
+    }
     
     return (
       <div className='flex h-screen bg-green-200 justify-center items-center'>
@@ -30,12 +44,13 @@ function Users() {
                         <Link to={`/edit/${user.id}`} className="bg-blue-500 hover:bg-blue-500 text-white text-sm py-1 px-2 rounded">
                           Update
                         </Link>       
-                        <Link to="/delete" className="bg-red-500 hover:bg-red-500 text-white text-sm py-1 px-2 rounded ml-2 md:ml-2">
+                        <button 
+                          onClick={() => handleDelete(user.id)}
+                          className="bg-red-500 hover:bg-red-500 text-white text-sm py-1 px-2 rounded ml-2 md:ml-2">
                           Delete
-                        </Link>
+                        </button>
                       </td>
                     </tr>
-
                     })
                   }
               </tbody>
