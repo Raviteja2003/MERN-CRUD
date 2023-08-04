@@ -23,7 +23,7 @@ function UpdateUser()
     
     const handleUpdate = (e) => {
         e.preventDefault();
-        axios.put('http://localhost:3001/update/'+id,{name,email,age})
+        axios.put('https://odd-plum-parrot-sock.cyclic.app/update/'+id,{name,email,age})
         .then(res => {
             dispatch(updateUser({id,name,email,age}))
             navigate('/')

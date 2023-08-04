@@ -16,7 +16,7 @@ import { useNavigate } from "react-router-dom";
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:3001/create',{name,email,age})
+        axios.post('https://odd-plum-parrot-sock.cyclic.app/create',{name,email,age})
         .then(res => {
             dispatch(addUser(res.data))
             navigate('/')

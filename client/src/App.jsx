@@ -12,7 +12,7 @@ function App() {
   useEffect(()=>{
     const fetchData = async() => {
       try{
-        const response = await axios.get('http://localhost:3001');
+        const response = await axios.get('https://odd-plum-parrot-sock.cyclic.app/');
         dispatch(getUser(response.data));
       }
       catch(err)
